@@ -10,10 +10,10 @@ const App = () => {
   const [film, updateFilm] = useState({});
   const [userSearch, updateSearch] = useState("alien");
 
-  useEffect(() => {getTheFilmByTitle()}, []);
+  useEffect(() => {getTheFilmByTitle()}, [userSearch]);
 
   const getTheFilmByTitle = () => {
-    fetch("http://www.omdbapi.com/?apikey=23947ab0&t=alien")
+    fetch(`http://www.omdbapi.com/?apikey=23947ab0&t=${userSearch}`)
           .then(result => result.json())
           .then(result => {
               console.log(result);
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <h1>NotFlix</h1>
-    <NavBar handleInput={}/>
+    <NavBar handleInput={event => updateSearch(event.target.value)}/>
     <FilmShell film={film}/>
     </div>
   );
