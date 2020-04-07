@@ -9,15 +9,15 @@ const App = () => {
 
   const [films, updateFilm] = useState([]);
   const [userSearch, updateSearch] = useState("alien");
+  const [year, updateYear] = useState("")
 
-  useEffect(() => {getTheFilmByTitle()}, [userSearch]);
+  useEffect(() => {getTheFilmBySearch()}, [userSearch, year]);
 
-  const getTheFilmByTitle = () => {
-    fetch(`http://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}`)
+  const getTheFilmBySearch = () => {
+    fetch(`http://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}&y=${year}`)
           .then(result => result.json())
           .then(result => {
             let searchArray = result.Search
-              console.log(searchArray);
               updateFilm(searchArray);
           })
           .catch(error => {
@@ -28,7 +28,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <h1>NotFlix</h1>
-    <NavBar updateSearch={updateSearch}/>
+    <NavBar updateSearch={updateSearch} updateYear={updateYear} />
     {films.map(film => <div><FilmShell film={film}/></div>)}
     </div>
   );
