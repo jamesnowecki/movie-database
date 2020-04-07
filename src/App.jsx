@@ -7,17 +7,18 @@ import FilmShell from "./components/FilmShell";
 
 const App = () => {
 
-  const [film, updateFilm] = useState({});
+  const [films, updateFilm] = useState([]);
   const [userSearch, updateSearch] = useState("alien");
 
   useEffect(() => {getTheFilmByTitle()}, [userSearch]);
 
   const getTheFilmByTitle = () => {
-    fetch(`http://www.omdbapi.com/?apikey=23947ab0&t=${userSearch}`)
+    fetch(`http://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}`)
           .then(result => result.json())
           .then(result => {
-              console.log(result);
-              updateFilm(result);
+            let searchArray = result.Search
+              console.log(searchArray);
+              updateFilm(searchArray);
           })
           .catch(error => {
               console.log(error)
@@ -27,8 +28,8 @@ const App = () => {
   return (
     <div className={styles.app}>
       <h1>NotFlix</h1>
-    <NavBar handleInput={event => updateSearch(event.target.value)}/>
-    <FilmShell film={film}/>
+    <NavBar updateSearch={updateSearch}/>
+    {films.map(film => <div><FilmShell film={film}/></div>)}
     </div>
   );
 }
