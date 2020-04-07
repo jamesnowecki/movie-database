@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {getTheFilmBySearch()}, [userSearch, year]);
 
   const getTheFilmBySearch = () => {
-    fetch(`http://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}&y=${year}`)
+    fetch(`https://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}&y=${year}`)
           .then(result => result.json())
           .then(result => {
             let searchArray = result.Search

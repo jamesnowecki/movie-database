@@ -11,7 +11,7 @@ const FilmShell = ({film}) => {
 
 
   const getTheFilmFullObj = (id) => {
-    fetch(`http://www.omdbapi.com/?apikey=23947ab0&i=${id}`)
+    fetch(`https://www.omdbapi.com/?apikey=23947ab0&i=${id}`)
           .then(result => result.json())
           .then(result => {
               updateFullFilm(result);
