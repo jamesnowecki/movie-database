@@ -4,14 +4,14 @@ import FilmExtensionInfo from "../FilmExtensionInfo/FilmExtensionInfo";
 
 
 const FilmShell = ({film}) => {
-  const {Title, Year, Poster} = film;
+  const {Title, Year, Poster, imdbID} = film;
 
   const [fullFilm, updateFullFilm] = useState("");
   const [extensionRequested, toggleExtensionRequested] = useState(false);
 
 
-  const getTheFilmFullObj = () => {
-    fetch(`http://www.omdbapi.com/?apikey=23947ab0&t=${Title}`)
+  const getTheFilmFullObj = (id) => {
+    fetch(`http://www.omdbapi.com/?apikey=23947ab0&i=${id}`)
           .then(result => result.json())
           .then(result => {
               updateFullFilm(result);
@@ -29,7 +29,7 @@ const FilmShell = ({film}) => {
       <h2>{Title}</h2>
       <img src={Poster} alt={`${Title} poster`} />
       <p>{Year}</p>
-      <button onClick={() => getTheFilmFullObj()}> More info</button>
+      <button onClick={() => getTheFilmFullObj(imdbID)}> More info</button>
       {extensionJSX}
     </>
   );
