@@ -9,7 +9,7 @@ const App = () => {
 
   const [films, updateFilm] = useState([]);
   const [userSearch, updateSearch] = useState("alien");
-  const [year, updateYear] = useState("")
+  const [year, updateYear] = useState("");
 
   useEffect(() => {getTheFilmBySearch()}, [userSearch, year]);
 
