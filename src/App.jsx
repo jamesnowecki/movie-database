@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import NavBar from "./containers/NavBar";
 import FilmShell from "./components/FilmShell";
 
-
 const App = () => {
 
   const [films, updateFilm] = useState([]);
@@ -29,7 +28,7 @@ const App = () => {
     <div className={styles.app}>
       <h1>NotFlix</h1>
     <NavBar updateSearch={updateSearch} updateYear={updateYear} />
-    {films.map(film => <div><FilmShell film={film}/></div>)}
+    {films.map(film => <div key={film.imdbID}><FilmShell film={film}/></div>)}
     </div>
   );
 }
