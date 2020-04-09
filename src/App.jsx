@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import NavBar from "./containers/NavBar";
 import FilmShell from "./components/FilmShell";
 
@@ -10,9 +10,7 @@ const App = () => {
   const [userSearch, updateSearch] = useState("alien");
   const [year, updateYear] = useState("");
 
-  useEffect(() => {getTheFilmBySearch()}, [userSearch, year]);
-
-  const getTheFilmBySearch = () => {
+  const getTheFilmBySearch = useCallback(() => {
     fetch(`https://www.omdbapi.com/?apikey=23947ab0&s=${userSearch}&y=${year}`)
           .then(result => result.json())
           .then(result => {
@@ -22,7 +20,9 @@ const App = () => {
           .catch(error => {
               console.log(error)
           });
-  }
+  }, [userSearch, year]);
+
+  useEffect(() => {getTheFilmBySearch()}, [userSearch, year, getTheFilmBySearch]);
 
   return (
     <div className={styles.app}>

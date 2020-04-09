@@ -15,35 +15,14 @@ const NavBar = (props) => {
   }
 
   return (
-    <>
-    <Navbar bg="dark" expand="lg">
-      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-        <Form inline>
+    <Navbar bg="dark" varient="dark" expand="lg"  className={styles.navbar}>
+      <Navbar.Brand className="mr-auto" href="#home" className={styles.navText}>Look for a film</Navbar.Brand>
+        <Form inline >
           <FormControl type="text" placeholder="Film title" className="mr-sm-2" onChange={event => updateSearchText(event.target.value)} />
           <FormControl type="text" placeholder="Filter by year" className="mr-sm-2" onChange={event => updateYearFilter(event.target.value)}/>
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-success" onClick={() => setSearchTerms()}>Search</Button>
         </Form>
-      </Navbar.Collapse>
     </Navbar>
-    
-      <input type="text" placeholder="Film Title" onChange={event => updateSearchText(event.target.value)}/>
-      <input type="text" placeholder="Year" onChange={event => updateYearFilter(event.target.value)}/>
-
-      <button onClick={() => setSearchTerms()}>Search</button>
-    </>
   );
 };
 
