@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './App.module.scss';
 import { useState, useEffect, useCallback } from 'react';
 import NavBar from "./containers/NavBar";
