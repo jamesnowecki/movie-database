@@ -1,11 +1,40 @@
+@import "~bootstrap/scss/bootstrap";
 
-.App {
+.app {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Titillium Web', sans-serif;
   background-color: black;
   color: white;
+  font-family: "Titillium Web", sans-serif;
+
+  h1 {
+    font-family: "Titillium Web", sans-serif;
+    text-align: center;
+    font-weight: 700;
+    color: #27A744;
+  }
+
+  .filmSearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    padding: 20px;
+
+    div {
+      margin: 0 0 10px 0;
+    }
+  }
 }
 
-@import "~bootstrap/scss/bootstrap";
+@media only screen and (min-width: 426px) {
+  .app {
+    .filmSearch {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

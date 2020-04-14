@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NavBar.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Navbar, Nav, Form, FormControl, Button, NavDropdown} from 'react-bootstrap';
+import {Navbar, Form, FormControl, Button} from 'react-bootstrap';
 
 const NavBar = (props) => {
   const {updateSearch, updateYear} = props;
@@ -15,8 +15,7 @@ const NavBar = (props) => {
   }
 
   return (
-    <Navbar bg="dark" varient="dark" expand="lg"  className={styles.navbar}>
-      <Navbar.Brand className="mr-auto" href="#home" className={styles.navText}>Look for a film</Navbar.Brand>
+    <Navbar bg="dark" sticky="top" varient="dark" expand="lg"  className={styles.navbar}>
         <Form inline >
           <FormControl type="text" placeholder="Film title" className="mr-sm-2" onChange={event => updateSearchText(event.target.value)} />
           <FormControl type="text" placeholder="Filter by year" className="mr-sm-2" onChange={event => updateYearFilter(event.target.value)}/>

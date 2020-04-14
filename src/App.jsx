@@ -29,7 +29,9 @@ const App = () => {
     <div className={styles.app}>
       <h1>NotFlix</h1>
     <NavBar updateSearch={updateSearch} updateYear={updateYear} />
-    {films.map(film => <div key={film.imdbID}><FilmShell film={film}/></div>)}
+      <div className={styles.filmSearch}>
+      {films.map(film => <div key={film.imdbID}><FilmShell film={film}/></div>)}
+      </div>
     </div>
   );
 }

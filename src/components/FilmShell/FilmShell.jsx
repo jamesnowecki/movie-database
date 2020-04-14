@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./FilmShell.module.scss";
 import FilmExtensionInfo from "../FilmExtensionInfo/FilmExtensionInfo";
-import {Card,  } from "react-bootstrap"
+import {Card, Button } from "react-bootstrap"
 
 
 const FilmShell = ({film}) => {
@@ -27,12 +27,13 @@ const FilmShell = ({film}) => {
 
   return (
     <>
-    <Card style={{ width: '18rem' }}>
+    <Card style={ {width: '18rem'} } bg='dark' text='light' border="success">
         <Card.Img variant="top" src={Poster} />
-        <Card.Body>80
+        <Card.Body>
            <Card.Title>{Title}</Card.Title>
            <Card.Text>{Year}</Card.Text>
-          <Button variant="primary" onClick={() => getTheFilmFullObj(imdbID)}>More info</Button>
+          <Button variant="outline-success" onClick={() => getTheFilmFullObj(imdbID)}>More info</Button>
+          {extensionJSX}
         </Card.Body>
     </Card>
       {/* <h2>{Title}</h2>
